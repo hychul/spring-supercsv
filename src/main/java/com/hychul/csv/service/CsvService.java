@@ -6,7 +6,6 @@ import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -18,7 +17,6 @@ import org.supercsv.io.CsvMapWriter;
 import org.supercsv.io.ICsvMapReader;
 import org.supercsv.io.ICsvMapWriter;
 import org.supercsv.prefs.CsvPreference;
-import org.supercsv.util.CsvContext;
 
 import com.hychul.csv.processor.DefaultProcessor;
 import com.hychul.csv.service.model.CsvEntity;
@@ -56,24 +54,10 @@ public class CsvService {
         }
     }
 
-//    private static CellProcessor[] getProcessors(int size) {
-//        final CellProcessor[] cellProcessors = new CellProcessor[size];
-//        for (int i = 0; i < size; i++) {
-//            cellProcessors[i] = new DefaultProcessor();
-//        }
-//        return cellProcessors;
-//    }
-
-
-    private CellProcessor[] getProcessors(int size) {
-        CellProcessor[] cellProcessors = new CellProcessor[size];
+    private static CellProcessor[] getProcessors(int size) {
+        final CellProcessor[] cellProcessors = new CellProcessor[size];
         for (int i = 0; i < size; i++) {
-            cellProcessors[i] = new CellProcessor() {
-                @Override
-                public String execute(Object value, CsvContext context) {
-                    return value.toString();
-                }
-            };
+            cellProcessors[i] = new DefaultProcessor();
         }
         return cellProcessors;
     }
