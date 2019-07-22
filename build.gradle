@@ -1,0 +1,35 @@
+plugins {
+	id 'org.springframework.boot' version '2.1.6.RELEASE'
+	id 'java'
+}
+
+apply plugin: 'io.spring.dependency-management'
+
+group = 'com.hychul'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	def swagger = '2.6.1'
+	def supercsv = '2.4.0'
+
+	// Spring
+	implementation("org.springframework.boot:spring-boot-starter-web")
+
+	// Test
+	testImplementation("org.springframework.boot:spring-boot-starter-test")
+
+	// Swagger2
+	compile("io.springfox:springfox-swagger2:$swagger")
+	compile("io.springfox:springfox-bean-validators:$swagger")
+	compile("io.springfox:springfox-swagger-ui:$swagger")
+
+	// Super CSV
+	compile("net.sf.supercsv:super-csv:$supercsv")
+	compile("net.sf.supercsv:super-csv-dozer:$supercsv")
+	compile("net.sf.supercsv:super-csv-java8:$supercsv")
+}
